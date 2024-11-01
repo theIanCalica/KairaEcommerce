@@ -38,17 +38,25 @@
                                 name="color" value="{{ $color->id }}" style="display: none;">
                             <label class="color-swatch" for="color-{{ $color->id }}">
                                 <span>{{ $color->name }}</span>
-                                <!-- Ensure this is the only place where color name appears -->
                                 <span class="checkmark">&#10004;</span>
                             </label>
                         </div>
                     @endforeach
+                </div>
 
+                <!-- Quantity Selection -->
+                <h6>Quantity:</h6>
+                <div class="mb-3">
+                    <input type="range" id="quantity-slider" name="quantity" min="1" max="10" value="1"
+                        class="form-range">
+                    <input type="number" id="quantity-input" name="quantity" value="1" min="1" max="10"
+                        class="form-control w-25" style="display:inline-block;">
                 </div>
 
                 @auth
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf
+                        <input type="hidden" id="quantity-hidden" name="quantity" value="1">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
                 @endauth
@@ -86,12 +94,6 @@
             transition: border-color 0.3s;
         }
 
-        .color-img {
-            width: 100%;
-            height: auto;
-            border-radius: 3px;
-        }
-
         .checkmark {
             position: absolute;
             bottom: 5px;
@@ -114,13 +116,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sizeButtons = document.querySelectorAll('.size-btn');
             const colorRadios = document.querySelectorAll('.color-radio');
+            const quantitySlider = document.getElementById('quantity-slider');
+            const quantityInput = document.getElementById('quantity-input');
+            const quantityHidden = document.getElementById('quantity-hidden');
 
             // Handle size button click
             sizeButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all size buttons
                     sizeButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to the clicked button
                     this.classList.add('active');
                 });
             });
@@ -128,15 +131,24 @@
             // Handle color radio change
             colorRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    // Reset all color swatch borders and hide checkmarks
                     colorRadios.forEach(r => {
                         const label = document.querySelector(`label[for="${r.id}"]`);
                         label.style.borderColor = 'transparent';
                     });
-                    // Show checkmark on selected color swatch
                     const label = document.querySelector(`label[for="${this.id}"]`);
                     label.style.borderColor = '#007bff';
                 });
+            });
+
+            // Sync quantity slider with input box
+            quantitySlider.addEventListener('input', function() {
+                quantityInput.value = this.value;
+                quantityHidden.value = this.value;
+            });
+
+            quantityInput.addEventListener('input', function() {
+                quantitySlider.value = this.value;
+                quantityHidden.value = this.value;
             });
         });
     </script>
