@@ -12,4 +12,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Size::class, 'size_product');
     }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, "color_product");
+    }
 }

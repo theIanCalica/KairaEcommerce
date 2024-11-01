@@ -37,7 +37,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::with(['sizes', 'colors'])->find($id);
+        $uniqueColors = $product->colors->unique('id');
+        return view("product", compact("product", "uniqueColors"));
     }
 
     /**

@@ -18,13 +18,8 @@
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="card-text">Price: &#8369;{{ number_format($product->price, 2) }}</p>
 
-                            <!-- Show "Add to Cart" button if the user is logged in -->
-                            @auth
-                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                </form>
-                            @endauth
+                            <!-- Replace "Add to Cart" button with "View Product" button -->
+                            <a href="{{ route('product', $product->id) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
                 </div>

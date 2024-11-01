@@ -23,10 +23,10 @@ class ProductSizeSeeder extends Seeder
             return;
         }
 
-        // Loop through each product and associate it with random sizes
+        // Loop through each product and associate it with at least 3 random sizes
         foreach ($products as $product) {
-            // Randomly attach between 1 to 3 sizes to each product
-            $randomSizes = $sizes->random(rand(1, 3))->pluck('id');
+            // Randomly attach between 3 to the total number of sizes to each product
+            $randomSizes = $sizes->random(rand(3, $sizes->count()))->pluck('id');
             $product->sizes()->attach($randomSizes);
         }
     }
