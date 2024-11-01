@@ -16,3 +16,11 @@ Route::get("/about-us", function () {
 Route::get("/contact-us", function () {
     return view("contact");
 })->name("contact_us");
+
+Route::get("/login", function () {
+    return view("login");
+})->name("login");
+
+Route::get("/register", function () {
+    return view("register");
+})->name("register");
