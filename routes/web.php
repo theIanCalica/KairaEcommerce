@@ -28,6 +28,10 @@ Route::post('contact', [ContactController::class, 'submit'])->name('contact.subm
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::post("/cart", [CartController::class, "store"])->name("cart.add");
+Route::post("/cart/{id}", [CartController::class, "store"])->name("cart.add")->middleware("auth");
+Route::get("cart", [CartController::class, "index"])->name("cart.index")->middleware("auth");
+Route::patch("/cart/{id}", [CartController::class, "update"])->name("cart.update")->middleware("auth");
+
+
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);

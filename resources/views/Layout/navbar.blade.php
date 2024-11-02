@@ -21,19 +21,19 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center">
-                <a class="nav-link cart-item ms-3" href="{{ route('login') }}">
+                <a class="nav-link cart-item ms-3 me-3" href="{{ route('login') }}">
                     <i class="bi bi-person"></i><span class="cart-text d-none">Profile</span>
                 </a>
 
-                <!-- Cart text for small screens -->
-                <a class="nav-link cart-item" href="#">
+                <a class="nav-link cart-item me-3" href="#">
                     <i class="bi bi-cart"></i> <span class="cart-text d-none">Cart</span>
                 </a>
-                <!-- Search text for small screens -->
-                <a class="nav-link search-item ms-3" href="#">
+
+                <a class="nav-link search-item" href="#">
                     <i class="bi bi-search"></i> <span class="search-text d-none">Search</span>
                 </a>
             </div>
+
         </div>
     </div>
 </nav>
