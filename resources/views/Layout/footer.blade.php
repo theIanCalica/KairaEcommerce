@@ -22,9 +22,9 @@
             <div class="col-md-3 mb-4">
                 <h5 class="fw-bold">QUICK LINKS</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Home</a></li>
-                    <li><a href="#" class="text-dark">About</a></li>
-                    <li><a href="#" class="text-dark">Contact</a></li>
+                    <li><a href="{{ route('home') }}" class="text-dark">Home</a></li>
+                    <li><a href="{{ route('about_us') }}" class="text-dark">About</a></li>
+                    <li><a href="{{ route('contact_us') }}" class="text-dark">Contact</a></li>
                 </ul>
             </div>
 
@@ -32,12 +32,14 @@
             <div class="col-md-3 mb-4">
                 <h5 class="fw-bold">HELP & INFO</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Track Your Order</a></li>
-                    <li><a href="#" class="text-dark">Returns + Exchanges</a></li>
-                    <li><a href="#" class="text-dark">Shipping + Delivery</a></li>
-                    <li><a href="#" class="text-dark">Contact Us</a></li>
-                    <li><a href="#" class="text-dark">Find Us Easy</a></li>
-                    <li><a href="#" class="text-dark">FAQs</a></li>
+                    <li><a href="{{ route('orders.index') }}" class="text-dark">Track Your Order</a></li>
+                    <li><a href="{{ route('contact_us') }}" class="text-dark">Contact Us</a></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="text-dark bg-transparent border-0 p-0 m-0">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
 

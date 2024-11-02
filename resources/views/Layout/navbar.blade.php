@@ -25,13 +25,11 @@
                     <i class="bi bi-person"></i><span class="cart-text d-none">Profile</span>
                 </a>
 
-                <a class="nav-link cart-item me-3" href="#">
+                <a class="nav-link cart-item me-3" href="{{ route('cart.index') }}">
                     <i class="bi bi-cart"></i> <span class="cart-text d-none">Cart</span>
                 </a>
 
-                <a class="nav-link search-item" href="#">
-                    <i class="bi bi-search"></i> <span class="search-text d-none">Search</span>
-                </a>
+
             </div>
 
         </div>

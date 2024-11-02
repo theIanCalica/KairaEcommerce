@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Product;
@@ -35,3 +36,8 @@ Route::patch("/cart/{id}", [CartController::class, "update"])->name("cart.update
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+
+Route::post('/order/place', [OrderController::class, 'placeOrder'])->name('order.place');
+Route::get('/orders', [OrderController::class, 'viewAllOrders'])->name('orders.index');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
